@@ -1,0 +1,37 @@
+{% extends 'todoapp/base.html' %}
+
+{% block content %}
+<form action="{% url 'todoapp:singup' %}" method="post">
+	{% csrf_token %}
+	<div class="row g-2">
+		<div class="col-md">
+			<div class="form-floating mb-3">
+			  <input type="text" class="form-control" name="username" id="floating" placeholder="Username">
+			  <label for="floating">User Name</label>
+			</div>
+		</div>
+		<div class="form-floating mb-3">
+			  <input type="email" class="form-control" name="email" id="floatingInput" placeholder="Username">
+			  <label for="floatingInput">Email Address</label>
+		</div>
+		<div class="col-md">
+			<div class="form-floating">
+			  <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password">
+			  <label for="floatingPassword">Password</label>
+			</div>
+		</div>
+		<div class="col-md">
+			<div class="form-floating">
+			  <input type="password" name="password1" class="form-control" id="Password" placeholder="Password">
+			  <label for="Password">Password</label>
+			</div>
+		</div>
+		<div class="form-floating mb-3">
+			<button class="btn btn-secondary" type="submit">
+		 		Register
+			</button>
+		</div>
+	</div>
+</form>
+<a href="/mytodo/login/">login</a>
+{% endblock %}

@@ -1,0 +1,34 @@
+{% extends 'todoapp/base.html' %}
+
+{% block content %}
+{% for i in all_item %}
+	 <div class="card">
+	  <div class="card-header">
+	    {{ i.title }}
+	  </div>
+	  <div class="card-body">
+<!-- 	    <h5 class="card-title">Special title treatment</h5> -->
+	    <p class="card-text">
+	    {{ i.body }}
+	    </p>
+	    <a href="{% url 'todoapp:delete_item' i.id %}" class="btn btn-primary btn-sm">Delete Item</a>
+	  </div>
+	</div>
+	{% endfor %}
+
+	<hr>
+	<form action="{% url 'todoapp:add_item' %}" method="post">
+    	{% csrf_token %}
+	  	<div class="mb-6">
+		    <label for="exampleInputEmail1" class="form-label">Title</label>
+		    <input type="text" class="form-control" id="exampleInputEmail1" name='title' aria-describedby="emailHelp">
+		    <div id="emailHelp" class="form-text">We need title for todolist.</div>
+	  	</div>
+	  	<div class="mb-3">
+		  <label for="exampleFormControlTextarea1" class="form-label">Body textarea</label>
+		  <textarea class="form-control" name="body"  id="exampleFormControlTextarea1" rows="3"></textarea>
+		</div>
+		<button type="submit" class="btn btn-primary">Submit</button>
+	</form>
+
+{% endblock %}

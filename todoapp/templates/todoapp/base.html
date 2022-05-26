@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  	{% load static %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="{% static 'todoapp/css/style.css' %}" rel="stylesheet">
+  </head>
+  <body>
+  	<nav class="navbar" style="background-color: #e3f2fd;">
+		<ul class="nav justify-content-center">
+		  <li class="nav-item">
+		    <a class="nav-link active" aria-current="page" href="{% url 'todoapp:home' %}">Home</a>
+		  </li>
+		  <li class="nav-item">
+		    <a class="nav-link" href="{% url 'todoapp:singup' %}">Register</a>
+		  </li>
+		  <li class="nav-item">
+		    <a class="nav-link" href="{% url 'todoapp:singin' %}">Login</a>
+		  </li>
+		  {% if request.user.is_authenticated %}
+			  <li class="nav-item">
+			    <a class="nav-link" href="{% url 'todoapp:logout' %}">Logout</a>
+			  </li>
+			{% endif %}
+		</ul>
+	</nav>
+
+{% include 'todoapp/message.html' %}
+
+ <div class="container mt-5">
+
+
+  	{% block content %}
+
+  	{% endblock %}
+    
+</div>
+  </body>
+</html>
